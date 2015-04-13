@@ -1,4 +1,4 @@
-import unittest2 as unittest
+import unittest
 from mock import Mock, patch
 from time import time
 
@@ -17,14 +17,14 @@ class TestAlgorithms(unittest.TestCase):
     Test all algorithms with a common, simple/known anomalous data set
     """
 
-    def _addSkip(self, test, reason):
-        print reason
+    def _addSkip(self, result, test, reason):
+        print(reason)
 
     def data(self, ts):
         """
         Mostly ones (1), with a final value of 1000
         """
-        timeseries = map(list, zip(map(float, range(int(ts) - 86400, int(ts) + 1)), [1] * 86401))
+        timeseries = list(map(list, zip(map(float, range(int(ts) - 86400, int(ts) + 1)), [1] * 86401)))
         timeseries[-1][1] = 1000
         timeseries[-2][1] = 1
         timeseries[-3][1] = 1
@@ -69,7 +69,7 @@ class TestAlgorithms(unittest.TestCase):
         timeMock.return_value, timeseries = self.data(time())
         result, ensemble, datapoint = algorithms.run_selected_algorithm(timeseries, "test.metric")
         self.assertTrue(result)
-        self.assertTrue(len(filter(None, ensemble)) >= settings.CONSENSUS)
+        self.assertTrue(len(list(filter(None, ensemble))) >= settings.CONSENSUS)
         self.assertEqual(datapoint, 1000)
 
     @unittest.skip('Fails inexplicable in certain environments.')
