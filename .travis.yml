@@ -3,10 +3,10 @@ python:
   - 3.4
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq scipy
-  - sudo apt-get install -qq pandas
-  - sudo apt-get install -qq nose
-  - sudo apt-get install -qq mock
+  - sudo apt-get install -qq python3-scipy
+  - sudo apt-get install -qq python3-pandas
+  - sudo apt-get install -qq python3-nose
+  - sudo apt-get install -qq python3-mock
 install:
   - pip install patsy
   - pip install msgpack-python
