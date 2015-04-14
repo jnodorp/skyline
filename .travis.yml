@@ -5,7 +5,7 @@ install:
   - wget http://repo.continuum.io/archive/Anaconda3-2.2.0-Linux-x86_64.sh
   - chmod +x Anaconda3-2.2.0-Linux-x86_64.sh
   - ./Anaconda3-2.2.0-Linux-x86_64.sh -b
-  - PYTHONPATH= PATH=/home/travis/anaconda3/bin/pip install -r requirements.txt
+  - PYTHONPATH= PATH=/home/travis/anaconda3/bin:$PATH pip install -r requirements.txt
   - PYTHONPATH= PATH=/home/travis/anaconda3/bin:$PATH pip install patsy
   - PYTHONPATH= PATH=/home/travis/anaconda3/bin:$PATH pip install msgpack_python
   - cp src/settings.py.example src/settings.py
