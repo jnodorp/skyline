@@ -5,13 +5,13 @@ install:
   - wget http://repo.continuum.io/archive/Anaconda3-2.2.0-Linux-x86_64.sh
   - chmod +x Anaconda3-2.2.0-Linux-x86_64.sh
   - ./Anaconda3-2.2.0-Linux-x86_64.sh -b
-  - PYTHONPATH= PATH=/home/travis/anaconda/bin:$PATH pip install -r requirements.txt --use-mirrors
-  - PYTHONPATH= PATH=/home/travis/anaconda/bin:$PATH pip install patsy --use-mirrors
-  - PYTHONPATH= PATH=/home/travis/anaconda/bin:$PATH pip install msgpack_python --use-mirrors
+  - /home/travis/anaconda/bin/pip install -r requirements.txt
+  - /home/travis/anaconda/bin/pip install patsy
+  - /home/travis/anaconda/bin/pip install msgpack_python
   - cp src/settings.py.example src/settings.py
   - pip install pep8 --use-mirrors
 script:
-  - PYTHONPATH= PATH=/home/travis/anaconda/bin:$PATH nosetests -v --nocapture
+  - /home/travis/anaconda/bin/nosetests -v --nocapture
   - pep8 --exclude=migrations --ignore=E501,E251,E265 ./
 notifications:
   email: false
