@@ -1,23 +1,17 @@
 language: python
 python:
   - 3.4
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq python3-scipy
-  - sudo apt-get install -qq python3-nose
-  - sudo apt-get install -qq python3-mock
 install:
-  - pip install pandas
-  - pip install patsy
-  - pip install msgpack-python
-  - pip install redis
-  - pip install flask
-  - pip install simplejson
-  - pip install pep8
-  - pip install -r requirements.txt
+  - wget http://repo.continuum.io/archive/Anaconda3-2.2.0-Linux-x86_64.sh
+  - chmod +x Anaconda3-2.2.0-Linux-x86_64.sh
+  - ./Anaconda3-2.2.0-Linux-x86_64.sh -b
+  - PYTHONPATH= PATH=/home/travis/anaconda/bin:$PATH pip install -r requirements.txt --use-mirrors
+  - PYTHONPATH= PATH=/home/travis/anaconda/bin:$PATH pip install patsy --use-mirrors
+  - PYTHONPATH= PATH=/home/travis/anaconda/bin:$PATH pip install msgpack_python --use-mirrors
   - cp src/settings.py.example src/settings.py
+  - pip install pep8 --use-mirrors
 script:
-  - nosetests -v --nocapture
+  - PYTHONPATH= PATH=/home/travis/anaconda/bin:$PATH nosetests -v --nocapture
   - pep8 --exclude=migrations --ignore=E501,E251,E265 ./
 notifications:
   email: false
