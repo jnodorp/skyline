@@ -1,8 +1,8 @@
 ## Skyline
 
-[![Build Status](https://travis-ci.org/etsy/skyline.svg)](https://travis-ci.org/etsy/skyline)
+[![Build Status](https://travis-ci.org/jschlichtholz/skyline.svg)](https://travis-ci.org/jschlichtholz/skyline)
 
-![x](https://raw.github.com/etsy/skyline/master/screenshot.png)
+![x](https://raw.github.com/jschlichtholz/skyline/master/screenshot.png)
 
 Skyline is a real-time* anomaly detection* system*, built to enable passive
 monitoring of hundreds of thousands of metrics, without the need to configure a
