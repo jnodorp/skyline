@@ -99,9 +99,7 @@ class Roomba(Thread):
                 delta = now - duration
                 trimmed = [
                     tuple for tuple in timeseries
-                    if tuple[0] > delta
-                    and tuple[0] not in temp
-                    and not temp_add(tuple[0])
+                    if tuple[0] > delta and tuple[0] not in temp and not temp_add(tuple[0])
                 ]
 
                 # Purge if everything was deleted, set key otherwise
