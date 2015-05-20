@@ -40,7 +40,7 @@ RUN sed -i "s/^\(daemonize .*\)$/# \1/" bin/redis.conf \
  && sed -i "4 i import os" src/settings.py \
  && sed -i "s/^WEBAPP_IP .*$/WEBAPP_IP = '0.0.0.0'/" src/settings.py \
  && sed -i "s/^GRAPHITE_HOST .*$/GRAPHITE_HOST = 'graphite'/" src/settings.py \
- && sed -i "s/^CARBON_PORT .*$/CARBON_PORT = os.getenv('GRAPHITE_PORT_2003_TCP_PORT', 2003)/" src/settings.py \
+ && sed -i "s/^CARBON_PORT .*$/CARBON_PORT = int(os.getenv('GRAPHITE_PORT_2003_TCP_PORT', '2003'))/" src/settings.py \
  && sed -i "s/^# HORIZON_IP .*$/HORIZON_IP = '0.0.0.0'/" src/settings.py
 
 # Run the tests.
